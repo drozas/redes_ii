@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<typeInfoHistroy>
-<typeInfo enclosingTypes="" modifiers="1" name="EjemploExcepciones" package="" path="/practica02a/EjemploExcepciones.java" timestamp="1176133368000"/>
-<typeInfo enclosingTypes="" modifiers="1" name="EjemploExcepciones" package="" path="/practica02b/EjemploExcepciones.java" timestamp="1176134101000"/>
-<typeInfo enclosingTypes="" modifiers="1" name="EjemploServerSocketJava" package="server" path="/practica04a/server/EjemploServerSocketJava.java" timestamp="1176226702000"/>
-<typeInfo enclosingTypes="" modifiers="513" name="AlmacenRmi" package="fase3.remote" path="/fase3_ejemplo_rmi/fase3/remote/AlmacenRmi.java" timestamp="1179265458000"/>
-</typeInfoHistroy>

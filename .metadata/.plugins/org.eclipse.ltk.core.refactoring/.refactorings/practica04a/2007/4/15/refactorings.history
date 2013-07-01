@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<session version="1.0">
-<refactoring comment="Rename package 'Server' to 'server'&#10;- Original element: 'practica04a/Server'&#10;- Renamed element: 'practica04a/server'&#10;- Update references to refactored element&#10;- Update textual occurrences in comments and strings" description="Rename package 'Server'" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/&lt;Server" name="server" qualified="false" references="true" stamp="1176226704646" textual="false" version="1.0"/>
-<refactoring comment="Rename package 'Cliente' to 'cliente'&#10;- Original element: 'practica04a/Cliente'&#10;- Renamed element: 'practica04a/cliente'&#10;- Update references to refactored element&#10;- Update textual occurrences in comments and strings" description="Rename package 'Cliente'" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/&lt;Cliente" name="cliente" qualified="false" references="true" stamp="1176226779997" textual="false" version="1.0"/>
-</session>

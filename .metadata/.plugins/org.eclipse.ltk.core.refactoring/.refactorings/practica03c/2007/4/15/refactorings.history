@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<session version="1.0">
-<refactoring comment="Rename type 'EscribeEnteros' to 'EscribeDoubles'&#10;- Original element: 'EscribeEnteros'&#10;- Renamed element: 'EscribeDoubles'&#10;- Update references to refactored element&#10;- Update textual occurrences in comments and strings" description="Rename type 'EscribeEnteros'" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/&lt;{EscribeEnteros.java[EscribeEnteros" matchStrategy="1" name="EscribeDoubles" qualified="false" references="true" similarDeclarations="false" stamp="1176140386648" textual="false" version="1.0"/>
-<refactoring comment="Rename type 'LeeEnteros' to 'LeeDoubles'&#10;- Original element: 'LeeEnteros'&#10;- Renamed element: 'LeeDoubles'&#10;- Update references to refactored element&#10;- Update textual occurrences in comments and strings" description="Rename type 'LeeEnteros'" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/&lt;{LeeEnteros.java[LeeEnteros" matchStrategy="1" name="LeeDoubles" qualified="false" references="true" similarDeclarations="false" stamp="1176140407735" textual="false" version="1.0"/>
-</session>
