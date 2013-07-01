@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project 'fase2_threadPool' to 'fase2_entrega'&#10;- Original element: 'fase2_threadPool'&#10;- Update references to refactored element" description="Rename Java project 'fase2_threadPool'" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=fase2_threadPool" name="fase2_entrega" references="true" stamp="1178645859328" version="1.0"/>
+</session>

@@ -1,0 +1,75 @@
+package es.urjc.escet.gsyc.rmi;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import es.urjc.escet.gsyc.p2p.tipos.ListaUsuarios;
+import es.urjc.escet.gsyc.p2p.tipos.Usuario;
+
+public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
+{
+	//Estructuras de datos que mapean nick->usuario, clave->usuario
+	private HashMap<String, Usuario> usuarios;
+	private HashMap<String, String> claves;
+	
+	/**
+	 * 
+	 * Constructor
+	 * 
+	 * @throws RemoteException
+	 */
+	public RegistradorImpl() throws RemoteException 
+	{
+		usuarios = new HashMap<String, Usuario>();
+		claves = new HashMap<String, String>();
+	}
+	
+	/**
+	 * 
+	 * 
+	 * 
+	 */
+	public synchronized String registrar(Usuario usuario, String clave) throws RemoteException 
+	{
+		//Comprobación de usuario ya registrado
+		if(usuarios.containsKey(usuario.getNick()))
+		{
+			String claveGuardada = claves.get(usuario.getNick());
+			if(claveGuardada != null && claveGuardada.contentEquals(clave))
+				return null;
+			else
+				return "Ya existe un usuario registrado con el nick: " + usuario.getNick();
+		}else{
+			//Si no está registrado, agregamos su info a nuestras tablas hash
+			this.usuarios.put(usuario.getNick(), usuario);
+			this.claves.put(usuario.getNick(), clave);
+			return null;
+		}
+		
+		
+	}
+	
+	/**
+	 * Método remoto que elimina al usuario de nuestras tablas hash 
+	 * 
+	 */
+	public synchronized String darDeBaja(String nick, String clave) throws RemoteException 
+	{
+		if(usuarios.get(nick) == null)
+			return "No existe un usuario registrado con el nick:"+ nick;
+		if(claves.get(nick).contentEquals(clave)){
+			... //Añadir el código restante aquí
+		} else {
+			return "La clave especificada no es válida";
+		}
+	}
+	public synchronized ListaUsuarios getTodos() throws
+	RemoteException {
+		...//Añadir código restante aquí
+	}
+	public synchronized Usuario getUsuario(String nick) throws
+	RemoteException {
+		return usuarios.get(nick);
+	}
+}

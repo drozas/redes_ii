@@ -1,0 +1,103 @@
+package es.urjc.escet.gsyc.rmi;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import es.urjc.escet.gsyc.p2p.tipos.ListaUsuarios;
+import es.urjc.escet.gsyc.p2p.tipos.Mensaje;
+import es.urjc.escet.gsyc.p2p.tipos.Usuario;
+
+//TODO: Cambiar el tipo de Usuario a un UsuarioBasic, con menos info
+
+public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
+{
+	//Estructuras de datos que mapean nick->usuario, clave->usuario
+	private HashMap<String, Usuario> usuarios;
+	private HashMap<String, String> claves;
+	
+	/**
+	 * 
+	 * Constructor
+	 * 
+	 * @throws RemoteException
+	 */
+	public RegistradorImpl() throws RemoteException 
+	{
+		usuarios = new HashMap<String, Usuario>();
+		claves = new HashMap<String, String>();
+	}
+	
+	/**
+	 * 
+	 * 
+	 * 
+	 */
+	public synchronized String registrar(Usuario usuario, String clave) throws RemoteException 
+	{
+		//Comprobación de usuario ya registrado
+		if(usuarios.containsKey(usuario.getNick()))
+		{
+			String claveGuardada = claves.get(usuario.getNick());
+			if(claveGuardada != null && claveGuardada.contentEquals(clave))
+				return null;
+			else
+				return "Ya existe un usuario registrado con el nick: " + usuario.getNick();
+		}else{
+			//Si no está registrado, agregamos su info a nuestras tablas hash
+			this.usuarios.put(usuario.getNick(), usuario);
+			this.claves.put(usuario.getNick(), clave);
+			return null;
+		}
+		
+		
+	}
+	
+	/**
+	 * 
+	 * Método remoto que elimina al usuario de nuestras tablas hash.
+	 * Devuelve null si todo fue correcto, o un string informando del error en
+	 * caso contrario. 
+	 * 
+	 */
+	public synchronized String darDeBaja(String nick, String clave) throws RemoteException 
+	{
+		//Comprobamos que el usuario exista, y su clave sea válida
+		if(usuarios.get(nick) == null)
+			return "No existe un usuario registrado con el nick:"+ nick;
+		if(claves.get(nick).contentEquals(clave))
+		{
+			//Lo eliminamos de nuestras estructuras de datos.
+			this.usuarios.remove(nick);
+			this.claves.remove(nick);
+			return null;
+			
+		} else {
+			return "La clave especificada no es válida";
+		}
+	}
+	
+	/**
+	 * 
+	 * Devuelve una lista de usuarios
+	 * 
+	 */
+	public synchronized ListaUsuarios getTodos() throws RemoteException 
+	{
+		//Creamos la lista a devolver
+		ListaUsuarios listaUsuarios = new ListaUsuarios(null);
+		//Cargamos todos los valores de nuestra tabla hash en la lista
+		Enumeration<Usuario> iterador = this.usuarios.elements();
+	
+		while (iterador.hasMoreElements())		
+			listaUsuarios.
+			listaMensajesString += iterador.nextElement().toString();
+		
+	
+	}
+	public synchronized Usuario getUsuario(String nick) throws
+	RemoteException {
+		return usuarios.get(nick);
+	}
+}

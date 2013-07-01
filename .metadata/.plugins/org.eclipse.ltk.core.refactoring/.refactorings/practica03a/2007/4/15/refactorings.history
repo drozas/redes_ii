@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit 'EscribeEnteros.java' to 'EscribeBytes.java'&#10;- Original element: 'EscribeEnteros.java'&#10;- Renamed element: 'EscribeBytes.java'" description="Rename compilation unit 'EscribeEnteros.java'" flags="589830" id="org.eclipse.jdt.ui.rename.compilationunit" input="/&lt;{EscribeEnteros.java" name="EscribeBytes.java" stamp="1176138696934" version="1.0"/>
+</session>

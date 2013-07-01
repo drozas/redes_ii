@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<project name="Practica Final de Redes II" default="compile">
+
+  <property name="src" location="src"/>
+  <property name="build" location="bin"/>
+  <property name="jar.filename"  location="${build}/practica-final-redes2-${user.name}.jar"/>
+  <property name="zip.filename"  location="${build}/practica-final-redes2-${user.name}.zip"/>
+  <property name="terminal.config" location="p2p.cfg"/>
+	
+  <path id="project.classpath">
+    <pathelement location="${build}"/>
+  </path>
+	
+  <target name="compile" description="Compila el código">
+    <javac srcdir="src" destdir="${build}"/>
+  </target>
+  
+  <target name="clean" description="Borra las classes compiladas">
+    <delete>
+      <fileset dir="${build}" includes="**/*.class"/>
+    </delete>
+  </target>
+
+  <target name="jar" depends="compile" description="Crear una librería JAR con mi solución">
+    <jar destfile="${jar.filename}" basedir="${build}" includes="**/*.class" />
+  </target>
+
+  <target name="zip" depends="compile" description="Crear un fichero ZIP con las fuentes de mi solución">
+    <zip destfile="${zip.filename}" basedir="." excludes="**/*.class,**/*.jar,**/*~" />
+  </target>
+
+  <target name="terminal" description="Ejecutar el Terminal HTTP">
+  	<java classname="es.urjc.escet.gsyc.Terminal" fork="true" classpathref="project.classpath">
+  	  <arg value="${terminal.config}"/>
+  	</java>
+  </target>
+	
+  <target name="servidor" description="Ejecutar el Servidor Central">
+  	<java classname="es.urjc.escet.ServidorCentral" fork="true" classpathref="project.classpath">
+  	  <arg value="localhost"/>
+   	  <arg value="4567"/>
+  	</java>
+  </target>
+		
+</project>
